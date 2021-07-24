@@ -1,14 +1,32 @@
 #include	<unistd.h>
 
-void	ft_putchar(char c);
+void	ft_print_comb(void);
 
-void	ft_putchar(char c)
+void	ft_print_comb(void)
 {
-	if(c > 0)
+	int	un;
+	int	dz;
+	int	cn;
+
+	un = '2';
+	dz = '1';
+	cn = '0';
+	while (cn < '8')
 	{
-		c = c * (c-1);
-		char n = c;
-		write(1, &n, 1);
+		while (dz < '9')
+		{
+			while (un <= '9')
+			{
+				write(1, &cn, 1);
+				write(1, &dz, 1);
+				write(1, &un, 1);
+				if (cn != '7')
+					write(1, ", ", 2);
+				un++;
+			}
+			un = ++dz + 1;
+		}
+		dz = ++cn + 1;
+		un = dz + 1;
 	}
 }
-
